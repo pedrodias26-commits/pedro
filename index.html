@@ -3,13 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Vôlei</title>
+    <title>Gastronomia Deliciosa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <canvas id="volleyballGame"></canvas>
-    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#receitas">Receitas</a></li>
+                <li><a href="#dicas">Dicas Culinárias</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <h1>Bem-vindo ao Mundo da Gastronomia</h1>
+            <p>Descubra receitas deliciosas e dicas para aprimorar suas habilidades na cozinha!</p>
+        </div>
+    </section>
+
+    <section id="receitas">
+        <h2>Receitas Populares</h2>
+        <div class="receita">
+            <h3>Macarrão ao Alho e Óleo</h3>
+            <p>Uma receita rápida e deliciosa para os amantes de pasta.</p>
+            <button onclick="mostrarReceita('macarrao')">Ver Receita</button>
+        </div>
+        <div class="receita">
+            <h3>Bolo de Chocolate</h3>
+            <p>Para os amantes de doces, esse bolo é imperdível.</p>
+            <button onclick="mostrarReceita('bolo')">Ver Receita</button>
+        </div>
+    </section>
+
+    <section id="dicas">
+        <h2>Dicas Culinárias</h2>
+        <ul>
+            <li>Use ingredientes frescos para um sabor mais intenso.</li>
+            <li>Não tenha medo de experimentar temperos diferentes.</li>
+            <li>Organize seus utensílios antes de começar a cozinhar.</li>
+        </ul>
+    </section>
+
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <form id="formContato">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Gastronomia Deliciosa. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

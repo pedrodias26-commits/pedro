@@ -1,97 +1,44 @@
-const canvas = document.getElementById("volleyballGame");
-const ctx = canvas.getContext("2d");
+// Função para mostrar a receita quando o botão for clicado
+function mostrarReceita(tipo) {
+    let receitaDescricao = '';
 
-canvas.width = 800;
-canvas.height = 600;
-
-let bola = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    raio: 15,
-    velocidadeX: 4,
-    velocidadeY: 4,
-    cor: "#FF6347"
-};
-
-let jogador = {
-    x: 0,
-    y: canvas.height / 2 - 50,
-    largura: 15,
-    altura: 100,
-    cor: "#32CD32",
-    velocidade: 5
-};
-
-let ia = {
-    x: canvas.width - 15,
-    y: canvas.height / 2 - 50,
-    largura: 15,
-    altura: 100,
-    cor: "#FF8C00",
-    velocidade: 4
-};
-
-let pontuacaoJogador = 0;
-let pontuacaoIA = 0;
-
-// Função para desenhar a bola
-function desenharBola() {
-    ctx.beginPath();
-    ctx.arc(bola.x, bola.y, bola.raio, 0, Math.PI * 2);
-    ctx.fillStyle = bola.cor;
-    ctx.fill();
-    ctx.closePath();
-}
-
-// Função para desenhar as raquetes
-function desenharRaquete(x, y, largura, altura, cor) {
-    ctx.beginPath();
-    ctx.rect(x, y, largura, altura);
-    ctx.fillStyle = cor;
-    ctx.fill();
-    ctx.closePath();
-}
-
-// Função para desenhar o placar
-function desenharPlacar() {
-    ctx.font = "30px Arial";
-    ctx.fillStyle = "#000";
-    ctx.fillText("Jogador: " + pontuacaoJogador, 20, 30);
-    ctx.fillText("IA: " + pontuacaoIA, canvas.width - 150, 30);
-}
-
-// Função para atualizar a posição da bola
-function atualizarBola() {
-    bola.x += bola.velocidadeX;
-    bola.y += bola.velocidadeY;
-
-    // Colisão com as paredes superior e inferior
-    if (bola.y - bola.raio <= 0 || bola.y + bola.raio >= canvas.height) {
-        bola.velocidadeY = -bola.velocidadeY;
+    if (tipo === 'macarrao') {
+        receitaDescricao = `
+            <h3>Macarrão ao Alho e Óleo</h3>
+            <p>Ingredientes: 250g de macarrão, 4 dentes de alho, 2 colheres de sopa de azeite, sal e pimenta a gosto.</p>
+            <p>Modo de preparo: Cozinhe o macarrão. Em uma frigideira, aqueça o azeite, adicione o alho picado e frite até dourar. Misture com o macarrão e sirva!</p>
+        `;
+    } else if (tipo === 'bolo') {
+        receitaDescricao = `
+            <h3>Bolo de Chocolate</h3>
+            <p>Ingredientes: 3 ovos, 2 xícaras de açúcar, 1 xícara de leite, 2 xícaras de farinha, 1 xícara de cacau em pó.</p>
+            <p>Modo de preparo: Misture todos os ingredientes, despeje em uma forma untada e asse por 30 minutos a 180°C.</p>
+        `;
     }
 
-    // Colisão com as raquetes
-    if (bola.x - bola.raio <= jogador.x + jogador.largura && bola.y >= jogador.y && bola.y <= jogador.y + jogador.altura) {
-        bola.velocidadeX = -bola.velocidadeX;
-        pontuacaoJogador++;
-    }
-    if (bola.x + bola.raio >= ia.x && bola.y >= ia.y && bola.y <= ia.y + ia.altura) {
-        bola.velocidadeX = -bola.velocidadeX;
-        pontuacaoIA++;
-    }
-
-    // Se a bola passar de uma raquete (gol)
-    if (bola.x - bola.raio <= 0 || bola.x + bola.raio >= canvas.width) {
-        resetarBola();
-    }
+    // Exibe a descrição da receita na tela
+    const receitaContainer = document.createElement('div');
+    receitaContainer.classList.add('receita-detalhada');
+    receitaContainer.innerHTML = receitaDescricao;
+    
+    // Adiciona a receita detalhada abaixo da receita
+    document.getElementById('receitas').appendChild(receitaContainer);
 }
 
-// Função para resetar a posição da bola após um gol
-function resetarBola() {
-    bola.x = canvas.width / 2;
-    bola.y = canvas.height / 2;
-    bola.velocidadeX = -bola.velocidadeX;
-    bola.velocidadeY = 4;
-}
+// Formulário de Contato
+const formContato = document.getElementById('formContato');
 
-// Função para
+formContato.addEventListener('submit', function (event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    if (nome && email && mensagem) {
+        alert('Obrigado pelo seu contato, ' + nome + '! Em breve responderemos seu e-mail.');
+        formContato.reset(); // Limpa o formulário após o envio
+    } else {
+        alert('Por favor, preencha todos os campos!');
+    }
+});
