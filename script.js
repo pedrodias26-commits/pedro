@@ -2,17 +2,17 @@
 function mostrarReceita(tipo) {
     let receitaDescricao = '';
 
-    if (tipo === 'macarrao') {
+    if (tipo === 'bolo-cafe') {
         receitaDescricao = `
-            <h3>Macarrão ao Alho e Óleo</h3>
-            <p>Ingredientes: 250g de macarrão, 4 dentes de alho, 2 colheres de sopa de azeite, sal e pimenta a gosto.</p>
-            <p>Modo de preparo: Cozinhe o macarrão. Em uma frigideira, aqueça o azeite, adicione o alho picado e frite até dourar. Misture com o macarrão e sirva!</p>
+            <h3>Bolo de Café</h3>
+            <p>Ingredientes: 3 colheres de sopa de café solúvel, 2 xícaras de açúcar, 2 xícaras de farinha de trigo, 3 ovos, 1 xícara de óleo, 1 colher de sopa de fermento em pó.</p>
+            <p>Modo de preparo: Bata todos os ingredientes no liquidificador, coloque em uma forma untada e asse em forno pré-aquecido a 180°C por 40 minutos.</p>
         `;
-    } else if (tipo === 'bolo') {
+    } else if (tipo === 'trufas') {
         receitaDescricao = `
-            <h3>Bolo de Chocolate</h3>
-            <p>Ingredientes: 3 ovos, 2 xícaras de açúcar, 1 xícara de leite, 2 xícaras de farinha, 1 xícara de cacau em pó.</p>
-            <p>Modo de preparo: Misture todos os ingredientes, despeje em uma forma untada e asse por 30 minutos a 180°C.</p>
+            <h3>Trufas de Chocolate</h3>
+            <p>Ingredientes: 1 lata de leite condensado, 1 xícara de creme de leite, 200g de chocolate meio amargo, cacau em pó para cobrir.</p>
+            <p>Modo de preparo: Derreta o chocolate e misture com o leite condensado e o creme de leite. Faça bolinhas e passe no cacau em pó. Deixe na geladeira por 1 hora.</p>
         `;
     }
 
@@ -29,16 +29,4 @@ function mostrarReceita(tipo) {
 const formContato = document.getElementById('formContato');
 
 formContato.addEventListener('submit', function (event) {
-    event.preventDefault(); // Previne o envio padrão do formulário
-
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const mensagem = document.getElementById('mensagem').value;
-
-    if (nome && email && mensagem) {
-        alert('Obrigado pelo seu contato, ' + nome + '! Em breve responderemos seu e-mail.');
-        formContato.reset(); // Limpa o formulário após o envio
-    } else {
-        alert('Por favor, preencha todos os campos!');
-    }
-});
+    event.preventDefault(); // Previne
